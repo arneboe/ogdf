@@ -36,6 +36,24 @@ file(MAKE_DIRECTORY "${CMAKE_BINARY_DIR}/ogdf/basic/internal")
 target_include_directories(OGDF BEFORE PUBLIC ${CMAKE_BINARY_DIR}/include)
 configure_file("${module_dir}/config_autogen.h.in" "${CMAKE_BINARY_DIR}/include/ogdf/basic/internal/config_autogen.h")
 
+# installation of the two libraries
+install(
+    TARGETS OGDF COIN
+    LIBRARY DESTINATION lib
+    ARCHIVE DESTINATION lib
+    )
+
+# all the header files using the same directory structure as in the source folder
+install(
+    DIRECTORY include/ogdf include/coin ${CMAKE_CURRENT_BINARY_DIR}/include/ogdf
+    DESTINATION include FILES_MATCHING REGEX ".?\\.h|.?\\.hpp")
+
+configure_file(ogdf.pc.in
+    ${CMAKE_BINARY_DIR}/ogdf.pc @ONLY)
+
+install(FILES ${CMAKE_BINARY_DIR}/ogdf.pc DESTINATION lib/pkgconfig)
+       
+
 # target documentation
 message(STATUS "The default target builds OGDF (and dependencies like COIN).")
 message(STATUS "")
@@ -46,3 +64,4 @@ endif()
 message(STATUS "       tests: build tests")
 message(STATUS "    examples: build examples")
 message(STATUS "   build-all: build OGDF, tests, examples")
+
