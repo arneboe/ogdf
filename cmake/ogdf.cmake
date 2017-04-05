@@ -8,8 +8,7 @@ option(OGDF_DEBUG "Whether to include OGDF assertions in Debug mode (increased r
 mark_as_advanced(OGDF_DEBUG)
 option(OGDF_USE_ASSERT_EXCEPTIONS "Whether to throw an exception on failed assertions." OFF)
 set(OGDF_USE_ASSERT_EXCEPTIONS_WITH_STACK_TRACE "OFF" CACHE
-    STRING "Which library (libdw, libbdf, libunwind) to use in case a stack trace should be written \
-    to a failed assertion exceptions's what(). Library must be found by CMake to be able to use it.")
+    STRING "Which library (libdw, libbdf, libunwind) to use in case a stack trace should be written to a failed assertion exceptions's what(). Library must be found by CMake to be able to use it.")
 if(OGDF_USE_ASSERT_EXCEPTIONS)
   set_property(CACHE OGDF_USE_ASSERT_EXCEPTIONS_WITH_STACK_TRACE PROPERTY STRINGS "OFF")
 else()
@@ -58,7 +57,7 @@ endif()
 add_library(OGDF ${OGDF_SOURCES})
 target_link_libraries(OGDF COIN)
 group_files(OGDF_SOURCES "ogdf")
-target_compile_features(OGDF PUBLIC cxx_range_for)
+#target_compile_features(OGDF PUBLIC cxx_range_for)
 if(COIN_EXTERNAL_SOLVER_INCLUDE_DIRECTORIES)
   target_include_directories(OGDF SYSTEM PUBLIC ${COIN_EXTERNAL_SOLVER_INCLUDE_DIRECTORIES})
 endif()
