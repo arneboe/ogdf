@@ -28,3 +28,4 @@
 /*.vcxproj
 /*.vcxproj.filters
 /doc/html
+build/*
