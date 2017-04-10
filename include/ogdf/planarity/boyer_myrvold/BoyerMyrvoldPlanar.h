@@ -106,9 +106,6 @@ public:
 	: BoyerMyrvoldPlanar(g, bundles, static_cast<int>(embeddingGrade), limitStructures, output, randomness, avoidE2Minors, extractSubgraph, edgeCosts)
 	{}
 
-	//! Destructor
-	~BoyerMyrvoldPlanar() { }
-
 	//! Starts the embedding algorithm
 	bool start();
 
