@@ -20,6 +20,8 @@ else()
   unset(OGDF_LEAK_CHECK CACHE)
 endif()
 
+find_package (Threads)
+
 # find available packages for stack traces
 if(OGDF_USE_ASSERT_EXCEPTIONS)
   find_package(Libdw)
@@ -55,7 +57,7 @@ if(NOT OGDF_COMPILE_LEGACY)
   endforeach()
 endif()
 add_library(OGDF ${OGDF_SOURCES})
-target_link_libraries(OGDF COIN)
+target_link_libraries(OGDF COIN ${CMAKE_THREAD_LIBS_INIT})
 group_files(OGDF_SOURCES "ogdf")
 #target_compile_features(OGDF PUBLIC cxx_range_for)
 if(COIN_EXTERNAL_SOLVER_INCLUDE_DIRECTORIES)
