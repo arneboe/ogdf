@@ -20,6 +20,7 @@ else()
   unset(OGDF_LEAK_CHECK CACHE)
 endif()
 
+enable_language(C)
 find_package (Threads)
 
 # find available packages for stack traces
