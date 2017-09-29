@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 2.8)
 project(OGDF-PROJECT CXX)
 
+set(CMAKE_CXX_FLAGS "-std=c++11 ${CMAKE_CXX_FLAGS}")
+
 set(module_dir "${CMAKE_SOURCE_DIR}/cmake")
 list(INSERT CMAKE_MODULE_PATH 0 "${module_dir}" )
 
